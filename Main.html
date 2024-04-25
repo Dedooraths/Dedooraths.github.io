@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Website</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#" onclick="scrollToSection('home')">Home</a></li>
+            <li><a href="#" onclick="scrollToSection('where')">Where am I from</a></li>
+            <li><a href="#" onclick="scrollToSection('what')">What do I do</a></li>
+            <li><a href="#" onclick="scrollToSection('contact')">Contact</a></li>
+        </ul>
+    </nav>
+    <section id="home">
+        <h2>Home Page</h2>
+        <!-- Your pictures can be added here -->
+        <p>This is the home page content.</p>
+        <button onclick="scrollToSection('where')">Where am I from</button>
+        <button onclick="scrollToSection('what')">What do I do</button>
+        <button onclick="scrollToSection('contact')">Contact</button>
+    </section>
+    <section id="where">
+        <h2>Where am I from</h2>
+        <p>This is the "Where am I from" section.</p>
+        <button onclick="scrollToSection('home')">Back to Home</button>
+    </section>
+    <section id="what">
+        <h2>What do I do</h2>
+        <p>This is the "What do I do" section.</p>
+        <button onclick="scrollToSection('home')">Back to Home</button>
+    </section>
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>This is the "Contact" section.</p>
+        <button onclick="scrollToSection('home')">Back to Home</button>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
