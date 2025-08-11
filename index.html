@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meal Cube - Healthy Eating Made Fun</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage" class="page active">
+        <div class="login-container">
+            <div class="login-box">
+                <div class="cube-logo">
+                    <i class="fas fa-cube"></i>
+                </div>
+                <h1>Meal Cube</h1>
+                <p>Healthy eating made random</p>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="username" placeholder="Username" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="login-btn">Login</button>
+                </form>
+                <div id="loginError" class="error-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="mainApp" class="page">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-cube"></i>
+                <span>Meal Cube</span>
+            </div>
+            <div class="nav-links">
+                <button class="nav-btn active" data-page="dashboard">Dashboard</button>
+                <button class="nav-btn" data-page="mealCube">Meal Cube</button>
+                <button class="nav-btn" data-page="calendar">Calendar</button>
+                <button class="nav-btn" data-page="map">Map</button>
+                <button class="nav-btn" data-page="profile">Profile</button>
+                <button class="nav-btn logout-btn" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Dashboard Page -->
+        <div id="dashboardPage" class="page-content active">
+            <div class="dashboard-container">
+                <h1>Welcome to Meal Cube!</h1>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-fire"></i>
+                        <h3>Daily Calories</h3>
+                        <p id="dailyCalories">0 / 2000</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-dumbbell"></i>
+                        <h3>Protein</h3>
+                        <p id="dailyProtein">0 / 150g</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Meals Today</h3>
+                        <p id="mealsToday">0 / 3</p>
+                    </div>
+                </div>
+                <div class="quick-actions">
+                    <button class="action-btn" onclick="showPage('mealCube')">
+                        <i class="fas fa-cube"></i>
+                        Spin the Cube
+                    </button>
+                    <button class="action-btn" onclick="showPage('calendar')">
+                        <i class="fas fa-calendar"></i>
+                        View History
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Meal Cube Page -->
+        <div id="mealCubePage" class="page-content">
+            <div class="meal-cube-container">
+                <h1>The Meal Cube</h1>
+                <div class="cube-section">
+                    <div class="cube-wrapper">
+                        <div id="mealCube" class="cube">
+                            <div class="cube-face front">SPIN ME!</div>
+                            <div class="cube-face back">SPIN ME!</div>
+                            <div class="cube-face right">SPIN ME!</div>
+                            <div class="cube-face left">SPIN ME!</div>
+                            <div class="cube-face top">SPIN ME!</div>
+                            <div class="cube-face bottom">SPIN ME!</div>
+                        </div>
+                    </div>
+                    <button id="spinBtn" class="spin-btn">SPIN THE CUBE</button>
+                </div>
+                <div id="mealResult" class="meal-result hidden">
+                    <h2>Your Meal</h2>
+                    <div class="meal-card">
+                        <h3 id="mealName">Meal Name</h3>
+                        <div class="meal-details">
+                            <div class="meal-info">
+                                <p><strong>Calories:</strong> <span id="mealCalories">0</span></p>
+                                <p><strong>Protein:</strong> <span id="mealProtein">0g</span></p>
+                                <p><strong>Location:</strong> <span id="mealLocation">Location</span></p>
+                            </div>
+                            <div class="meal-options">
+                                <button class="option-btn" data-option="eat-out">
+                                    <i class="fas fa-utensils"></i>
+                                    Eat Out
+                                </button>
+                                <button class="option-btn" data-option="home-cook">
+                                    <i class="fas fa-home"></i>
+                                    Home Cook
+                                </button>
+                            </div>
+                        </div>
+                        <div class="meal-actions">
+                            <button id="lockMealBtn" class="lock-btn">Lock This Meal</button>
+                            <button id="spinAgainBtn" class="spin-again-btn">Spin Again</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calendar Page -->
+        <div id="calendarPage" class="page-content">
+            <div class="calendar-container">
+                <h1>Food History</h1>
+                <div class="calendar-header">
+                    <button id="prevMonth" class="calendar-nav">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <h2 id="currentMonth">January 2024</h2>
+                    <button id="nextMonth" class="calendar-nav">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="calendar-grid">
+                    <div class="calendar-days">
+                        <div class="day-header">Sun</div>
+                        <div class="day-header">Mon</div>
+                        <div class="day-header">Tue</div>
+                        <div class="day-header">Wed</div>
+                        <div class="day-header">Thu</div>
+                        <div class="day-header">Fri</div>
+                        <div class="day-header">Sat</div>
+                    </div>
+                    <div id="calendarBody" class="calendar-body">
+                        <!-- Calendar days will be generated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map Page -->
+        <div id="mapPage" class="page-content">
+            <div class="map-container">
+                <h1>Nearby Restaurants</h1>
+                <div class="map-controls">
+                    <div class="radius-control">
+                        <label for="radiusSlider">Search Radius: <span id="radiusValue">5</span> km</label>
+                        <input type="range" id="radiusSlider" min="1" max="20" value="5">
+                    </div>
+                    <button id="refreshMapBtn" class="refresh-btn">
+                        <i class="fas fa-sync-alt"></i>
+                        Refresh
+                    </button>
+                </div>
+                <div id="map" class="map">
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <p>Map will be displayed here</p>
+                        <p>Showing restaurants within your radius</p>
+                    </div>
+                </div>
+                <div id="restaurantList" class="restaurant-list">
+                    <!-- Restaurant items will be generated here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Page -->
+        <div id="profilePage" class="page-content">
+            <div class="profile-container">
+                <h1>User Profile</h1>
+                <div class="profile-form">
+                    <div class="form-group">
+                        <label for="userWeight">Weight (kg)</label>
+                        <input type="number" id="userWeight" placeholder="70">
+                    </div>
+                    <div class="form-group">
+                        <label for="userHeight">Height (cm)</label>
+                        <input type="number" id="userHeight" placeholder="170">
+                    </div>
+                    <div class="form-group">
+                        <label for="userAge">Age</label>
+                        <input type="number" id="userAge" placeholder="25">
+                    </div>
+                    <div class="form-group">
+                        <label for="userActivity">Activity Level</label>
+                        <select id="userActivity">
+                            <option value="sedentary">Sedentary</option>
+                            <option value="light">Lightly Active</option>
+                            <option value="moderate">Moderately Active</option>
+                            <option value="very">Very Active</option>
+                            <option value="extra">Extra Active</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="userDietary">Dietary Restrictions</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" value="vegetarian"> Vegetarian</label>
+                            <label><input type="checkbox" value="vegan"> Vegan</label>
+                            <label><input type="checkbox" value="gluten-free"> Gluten Free</label>
+                            <label><input type="checkbox" value="dairy-free"> Dairy Free</label>
+                        </div>
+                    </div>
+                    <!-- Manual Override -->
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="manualOverrideToggle">
+                            Enable manual calorie and protein targets
+                        </label>
+                    </div>
+                    <div id="manualOverrideFields" class="form-group" style="display: none;">
+                        <div class="form-group">
+                            <label for="manualCalories">Daily Calorie Target</label>
+                            <input type="number" id="manualCalories" placeholder="e.g., 2200">
+                        </div>
+                        <div class="form-group">
+                            <label for="manualProtein">Daily Protein Target (g)</label>
+                            <input type="number" id="manualProtein" placeholder="e.g., 160">
+                        </div>
+                    </div>
+                    <button id="saveProfileBtn" class="save-btn">Save Profile</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Day Detail Modal -->
+    <div id="dayModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalDate">January 1, 2024</h2>
+            <div id="modalMeals" class="modal-meals">
+                <!-- Meal details will be shown here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
