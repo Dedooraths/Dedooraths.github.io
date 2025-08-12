@@ -1,9 +1,10 @@
 // Global variables
 let currentUser = null;
 let userProfile = {
-    weight: 70,
-    height: 170,
+    weight: 154, // lbs
+    height: 67,  // inches
     age: 25,
+    gender: 'male', // Default gender for BMR calculation
     activity: 'moderate',
     dietary: [],
     manualOverrideEnabled: false,
@@ -277,8 +278,8 @@ function populateProfileForm() {
 }
 
 function saveProfile() {
-    userProfile.weight = parseFloat(document.getElementById('userWeight').value) || 70;
-    userProfile.height = parseFloat(document.getElementById('userHeight').value) || 170;
+    userProfile.weight = parseFloat(document.getElementById('userWeight').value) || 154;
+    userProfile.height = parseFloat(document.getElementById('userHeight').value) || 67;
     userProfile.age = parseInt(document.getElementById('userAge').value) || 25;
     userProfile.activity = document.getElementById('userActivity').value;
 
@@ -312,11 +313,15 @@ function saveProfile() {
 
 function calculateDailyCalories() {
     // Basic BMR calculation using Mifflin-St Jeor Equation
+    // Convert imperial units to metric for calculation
+    const weightKg = userProfile.weight * 0.453592; // Convert lbs to kg
+    const heightCm = userProfile.height * 2.54;     // Convert inches to cm
+    
     let bmr;
     if (userProfile.gender === 'male') {
-        bmr = 10 * userProfile.weight + 6.25 * userProfile.height - 5 * userProfile.age + 5;
+        bmr = 10 * weightKg + 6.25 * heightCm - 5 * userProfile.age + 5;
     } else {
-        bmr = 10 * userProfile.weight + 6.25 * userProfile.height - 5 * userProfile.age - 161;
+        bmr = 10 * weightKg + 6.25 * heightCm - 5 * userProfile.age - 161;
     }
 
     // Activity multipliers
