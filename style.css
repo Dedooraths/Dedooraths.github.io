@@ -540,6 +540,10 @@ body {
 .day-meals {
     font-size: 0.8rem;
     color: #666;
+    margin-top: 5px;
+    text-align: center;
+    line-height: 1.2;
+    min-height: 20px;
 }
 
 /* Map */
@@ -854,4 +858,68 @@ body {
 
 .meal-result:not(.hidden) {
     animation: fadeIn 0.5s ease-out;
+}
+
+/* Meal Options Styling */
+.meal-options {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.option-radio {
+    flex: 1;
+    cursor: pointer;
+}
+
+.option-radio input[type="radio"] {
+    display: none;
+}
+
+.option-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 10px;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.option-radio input[type="radio"]:checked + .option-btn {
+    border-color: #667eea;
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.option-btn:hover {
+    border-color: #667eea;
+    transform: translateY(-1px);
+}
+
+.option-btn i {
+    font-size: 1.5rem;
+}
+
+/* Meal Option Display in Calendar */
+.meal-option {
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.meal-option.eat-out {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.meal-option.home-cook {
+    background: #f3e5f5;
+    color: #7b1fa2;
 }
