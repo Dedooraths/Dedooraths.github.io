@@ -116,14 +116,20 @@
                                 <p><strong>Location:</strong> <span id="mealLocation">Location</span></p>
                             </div>
                             <div class="meal-options">
-                                <button class="option-btn" data-option="eat-out">
-                                    <i class="fas fa-utensils"></i>
-                                    Eat Out
-                                </button>
-                                <button class="option-btn" data-option="home-cook">
-                                    <i class="fas fa-home"></i>
-                                    Home Cook
-                                </button>
+                                <label class="option-radio">
+                                    <input type="radio" name="mealOption" value="eat-out" required>
+                                    <span class="option-btn">
+                                        <i class="fas fa-utensils"></i>
+                                        Eat Out
+                                    </span>
+                                </label>
+                                <label class="option-radio">
+                                    <input type="radio" name="mealOption" value="home-cook" required>
+                                    <span class="option-btn">
+                                        <i class="fas fa-home"></i>
+                                        Home Cook
+                                    </span>
+                                </label>
                             </div>
                         </div>
                         <div class="meal-actions">
